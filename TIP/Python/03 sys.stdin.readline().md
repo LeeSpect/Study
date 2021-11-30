@@ -50,7 +50,7 @@ for i in range(n):
 
 ```py
 import sys
-n = int(sys.stdin.readlin())
+n = int(sys.stdin.readline())
 data = [sys.stdin.readline().strip() for i in range(n)]
 ```
 
