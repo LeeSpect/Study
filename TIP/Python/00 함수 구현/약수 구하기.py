@@ -33,3 +33,5 @@ def getDivisor(n):
 # N=A*B일 때, A==B일 수 있기 때문에 (ex. 25=5*5) 값을 중복해서 넣어주지 않기 위해 if 문으로 제곱했을 때 n이 되지 않는지 검사한다.
   # 혹은 i != (n//i)로도 검사할 수 있다.
 # 시간 복잡도 O(N**0.5)
+
+# https://minnit-develop.tistory.com/16
