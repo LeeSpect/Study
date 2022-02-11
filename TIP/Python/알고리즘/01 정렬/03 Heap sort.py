@@ -29,7 +29,7 @@ class Heap:
 
     def heapify_up(self, k):
         while k > 0 and self.A[(k-1)//2] < self.A[k]:
-            self.A[k], self.A[(k-1)//2] = self.A[(k01)//2], self.A[k]
+            self.A[k], self.A[(k-1)//2] = self.A[(k-1)//2], self.A[k]
             k = (k-1)//2
 
     def insert(self, key):
@@ -41,7 +41,7 @@ class Heap:
         key = self.A[0]
         self.A[0], self.A[len(self.A)-1] = self.A[len(self.A)-1], self.A[0]
         self.A.pop()
-        heapify_down(0, len(self.A))
+        self.heapify_down(0, len(self.A))
         return key
                     
 S = [int(x) for x in input().split()]
