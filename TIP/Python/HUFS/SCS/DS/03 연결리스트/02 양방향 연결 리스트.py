@@ -12,7 +12,7 @@ class DoublyLinkedList:
         self.size = 0
         
     def __iter__(self):
-        v = self.head
+        v = self.head.next
         while v.key != None:
             yield v
             v = v.next
@@ -22,17 +22,22 @@ class DoublyLinkedList:
         
     def __len__(self):
         return self.size
+    
+    def show(self):
+        cur_node = self.head
+        while cur_node.next.key != None:
+            print(cur_node.key, end=' -> ')
+            cur_node = cur_node.next
+        print(cur_node.key)
         
     def splice(self, a, b, x):
         if a==None or b==None or x==None:
             return
         ap = a.prev  #ap is previous node of a
         bn = b.next  #bn is next node of b
-        
         # cut [a..b]
         ap.next = bn
         bn.prev = ap
-        
         # insert [a..b] after x
         xn = x.next
         xn.prev = b
