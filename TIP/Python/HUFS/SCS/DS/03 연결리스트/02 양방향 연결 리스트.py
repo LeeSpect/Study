@@ -91,10 +91,10 @@ class DoublyLinkedList:
     def search(self, key):
         v = self.head.next
         while v.key:
-            if str(v.key) == str(key):
+            if v.key == str(key):
                 return v
             v = v.next
-        return v.key
+        return v
         
     def isEmpty(self):
         if self.size == 0:
