@@ -1,17 +1,25 @@
+# class Node:
+#     def __init__(self, key, parent=None, left=None, right=None):
+#         self.key=key
+#         self.parent=parent
+#         self.left=left
+#         self.right=right
+ 
 class Node:
-    def __init__(self, key, parent=None, left=None, right=None):
+    def __init__(self, key):
         self.key=key
-        self.parent=parent
-        self.left=left
-        self.right=right
+        self.parent=self.left=self.right=None
         
     def __str__(self):
         return str(self.key)
     
-class Tree:
+class BST:
     def __init__(self):
         self.root=None
         self.size=0
+        
+    def __len__(self):
+        return self.size
         
     def preorder(self,v): #노드 v와 자손 노드를 preorder로 방문하면서 출력 MLR
         if v!=None:
@@ -142,3 +150,58 @@ class Tree:
         else:
             self.root=None
         self.size-=1
+        
+    def height(self, x):
+        if x == None: return -1
+        else:
+            l = self.height(x.left)
+            r = self.height(x.right)
+            x.height = max(l, r) + 1
+            return x.height
+        
+    def number(self, x):
+        if x == None:
+            return 0
+        else:
+            l = self.number(x.left)
+            r = self.number(x.right)
+            x.number = l+r+1
+            return x.number
+        
+    def rotateLeft(self, x):
+        if x == None: return
+        z = x.right
+        if z == None: return
+        b = z.left
+        z.parent = x.parent
+        if x.parnet:
+            if x.parent.right == x:
+                x.parent.right = z
+            else:
+                x.parent.left = z
+        z.left = x
+        x.parent = z
+        x.right = b
+        if b:
+            b.parent = x
+        if x == self.root:
+            self.root = z
+        
+    def rotateRight(self, x):
+        if x == None: return
+        z = x.left
+        if z == None: return  # if x==None: nothing changed
+        b = z.right           # b == None 인 경우도 가능
+        z.parent = x.parent
+        if x.parent:
+            if x.parent.left == x:
+                x.parent.left = z
+            else:
+                x.parent.right = z
+        z.right = x
+        x.parent = z
+        x.left = b
+        if b:
+            b.parent = x
+        if x == self.root:
+            self.root = z
