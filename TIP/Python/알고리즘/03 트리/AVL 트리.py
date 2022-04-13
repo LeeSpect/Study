@@ -117,6 +117,13 @@ class AVLTree():
                     # rotation이 됐으므로 BF 업데이트
                     self.UpdateHeights()
                     self.UpdateBalances()
+                # U의 오른쪽 자식노드의 왼쪽 서브트리보다
+                # 올느쪽 서브트리보다 높이가 클 경우 시나리오4에 해당
+                # single left rotation (시나리오2도 이 작업 수행)
+                self.LRotate()
+                # rotation이 됐으므로 BF 업데이트
+                self.UpdateHeights()
+                self.UpdateBalances()
             
     def RRotate(self):
         # Rotate left pivoting on self
