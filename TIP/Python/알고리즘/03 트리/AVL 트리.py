@@ -58,7 +58,7 @@ class AVLTree():
         else:
             return
         
-    def logicalPredecssor(self,node):  # find the biggest valued node in LEFT child
+    def logicalPredecessor(self,node):  # find the biggest valued node in LEFT child
         node=node.left.root
         if node!=None:
             while node.right!=None:
