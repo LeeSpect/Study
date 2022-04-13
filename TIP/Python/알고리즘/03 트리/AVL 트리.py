@@ -54,7 +54,7 @@ class AVLTree():
                 now.left.Delete(key)
             elif key>now.key:
                 now.right.Delete(key)
-            self.Rbalance()
+            self.Rebalance()
         else:
             return
         
@@ -138,7 +138,7 @@ class AVLTree():
     def LRotate(self):
         # Rotate left pivoting on self
         print('Rotating '+str(self.root.key)+' left')
-        A=self.node
+        A=self.root
         B=self.root.right.root
         T=B.left.root
         self.root=B
@@ -154,7 +154,7 @@ class AVLTree():
                     self.root.left.UpdateHeights()
                 if self.root.right!=None:
                     self.root.right.UpdateHeights()
-            self.height=max(self.root.elft.height,self.root.right.height)+1
+            self.height=max(self.root.left.height,self.root.right.height)+1
             
     def UpdateBalances(self,recurse=True):
         if self.root==None:
