@@ -26,3 +26,30 @@ def power(a, n):
 # 사실 Base Case는 n이 0일때만 처리해주면 된다. n이 1이 될 때는 power(a, 1 // 2)가 호출되므로 이는 즉 power(a, 0)을 호출하기 때문이다.
 
 # https://seongonion.tistory.com/88
+
+
+# 아래는 1629 boj 문제
+# 자연수 A를 B번 곱하고 C로 나눈 나머지
+import sys; input=sys.stdin.readline
+
+def power(a,b,c):
+    if b==1:
+        return a%c
+    else:
+        k=power(a,b//2,c)
+        if b%2:
+            return k*k*a%c
+        else:
+            return k*k%c
+
+a,b,c=map(int,input().split())
+
+a=power(a,b,c)
+print(a)
+
+# 2147483646 2147483646 2147483647
+# ans: 1
+# 2 222 41 <= 반례들: 처음에 재귀 함수 호출할 때 매개변수를 a%c, b%c, c로 하면 틀리는 케이스
+# ans: 4
+# 3 200 241
+# ans: 225
