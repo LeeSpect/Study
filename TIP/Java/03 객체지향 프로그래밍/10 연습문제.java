@@ -1,5 +1,3 @@
-
-
 //6번 문제
 // 다음은 Calculator 객체를 생성하고 값을 더한 후에 그 결과값을 출력하는 예제이다.
 // 하지만 코드를 실행하면 오류가 발생한다.
@@ -135,3 +133,47 @@ public class Main {
         System.out.println(cal.getValue());  // 270 출력
     }
 }
+
+
+//9번 문제
+interface Predator {
+    String bark();
+}
+
+abstract class Animal {
+    public String hello() {
+        return "hello";
+    }
+}
+
+class Dog extends Animal {
+}
+
+class Lion extends Animal implements Predator {
+    public String bark() {
+        return "Bark bark!!";
+    }
+}
+
+public class Sample {
+    public static void main(String[] args) {
+        Animal a = new Lion();
+        Lion b = new Lion();
+        Predator c = new Lion();
+
+        System.out.println(a.hello());  // 1번
+        System.out.println(a.bark());   // 2번 오류발생
+        System.out.println(b.hello());  // 3번
+        System.out.println(b.bark());   // 4번
+        System.out.println(c.hello());  // 5번 오류발생
+        System.out.println(c.bark());   // 6번
+    }
+}
+
+// 2번 문장과 5번 문장에서 오류가 발생한다.
+
+// 2번 문장이 오류가 발생하는 이유는 a 객체가 Animal 타입으로 생성되었기 때문이다.
+// Animal 타입의 객체는 hello 메서드만 사용이 가능하다.
+
+// 5번 문장이 오류가 발생하는 이유는 c 객체가 Predator 타입으로 생성되었기 때문이다.
+// Predator 타입의 객체는 bark 메서드만 사용이 가능하다.
