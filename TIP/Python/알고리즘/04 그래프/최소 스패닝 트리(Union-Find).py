@@ -12,12 +12,13 @@ def find_parent(parents,node1):
     return parents[node1]
 
 def Union(parents,node1,node2):
-    a=find_parent(parents,node1)
-    b=find_parent(parents,node2)
-    if a==b:
+    a = find_parent(parents,node1)
+    b = find_parent(parents,node2)
+    
+    if a == b:
         return False
-    elif a<b:
-        parents[b]=a
+    elif a < b:
+        parents[b] = a
     else:
-        parents[a]=b
+        parents[a] = b
     return True
