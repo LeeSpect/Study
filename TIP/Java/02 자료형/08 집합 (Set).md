@@ -1,3 +1,45 @@
+# 1. 자바의 HashSet
+
+### HashSet 선언
+
+```java
+HashSet<Integer> set1 = new HashSet<Integer>();//HashSet생성
+HashSet<Integer> set2 = new HashSet<>();//new에서 타입 파라미터 생략가능
+HashSet<Integer> set3 = new HashSet<Integer>(set1);//set1의 모든 값을 가진 HashSet생성
+HashSet<Integer> set4 = new HashSet<Integer>(10);//초기 용량(capacity)지정
+HashSet<Integer> set5 = new HashSet<Integer>(10, 0.7f);//초기 capacity,load factor지정
+HashSet<Integer> set6 = new HashSet<Integer>(Arrays.asList(1,2,3));//초기값 지정
+```
+
+### Hash 값 추가: .add()
+
+### Hash 값 삭제: remove(n), clear()
+
+```java
+HashSet<Integer> set = new HashSet<Integer>(Arrays.asList(1,2,3));//HashSet생성
+set.remove(1);//값 1 제거
+set.clear();//모든 값 제거
+```
+
+### Hash 크기 구하기: .size()
+
+### Hash 값 출력: iter 이용
+
+```java
+HashSet<Integer> set = new HashSet<Integer>(Arrays.asList(1,2,3));//HashSet생성
+
+System.out.println(set); //전체출력 [1,2,3]
+		
+Iterator iter = set.iterator();	// Iterator 사용
+while(iter.hasNext()) {//값이 있으면 true 없으면 false
+    System.out.println(iter.next());
+}
+```
+
+### Hash 값 검색: .contains()
+
+
+
 Set 자료형에는 HashSet, TreeSet, LinkedHashSet 등의 Set 인터페이스를 구현한 자료형이 있다.
 여기서 말하는 Set 자료형은 인터페이스인데 인터페이스에 대해서는 뒤에서 자세히 다루도록 한다.
 
