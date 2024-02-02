@@ -68,6 +68,14 @@ public class Sample {
     }
 }
 ```
+
+### int -> char ( Character.forDigit() )
+```java
+//radix 10 is for decimal number, for hexa use radix 16 
+int radix = 10; //10진수
+int value_int = 6;
+char value_char = Character.forDigit(value_int , radix);
+```
       
 # final
 자료형에 값을 단 한번만 설정할 수 있게 강제하는 키워드이다.
