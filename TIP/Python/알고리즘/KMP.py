@@ -1,3 +1,47 @@
+# 백준 1786 찾기 풀이
+def makeTable(pattern):
+    table = [0 for _ in range(len(pattern))]
+
+    idx = 0
+    for i in range(1, len(pattern)):
+        while idx>0 and pattern[i] != pattern[idx]:
+            idx = table[idx-1]
+        if pattern[i] == pattern[idx]:
+            idx += 1
+            table[i] = idx
+    return table
+
+def KMP(string, pattern):
+    ans = []
+    table = makeTable(pattern)
+    idx,cnt = 0,0
+    for i in range(len(string)):
+        while idx>0 and string[i] != pattern[idx]:
+            idx = table[idx-1]
+        if string[i] == pattern[idx]:
+            if idx == len(pattern)-1:
+                ans.append(i-idx+1)
+                cnt += 1
+                idx = table[idx]
+            else:
+                idx += 1
+        
+    print(cnt)
+    print(*ans)
+
+
+def main():
+    string = input().rstrip()
+    pattern = input().rstrip()
+
+    KMP(string, pattern)
+
+if __name__ == "__main__":
+    main()
+
+# ----------------------------------------------------------------------------------------------------
+
+
 # 블로그 필자의 학교 알고리즘 책에 나온 코드
 # -*- encoding: cp949 -*-
 next = [0 for i in xrange(50)]
@@ -40,6 +84,8 @@ if __name__=='__main__':
 
 # 출처 : https://qkqhxla1.tistory.com/648?category=685988
 
+# ----------------------------------------------------------------------------------------------------
+
 # 블로그 필자의 알고리즘 문제집에 나온 
 # -*- encoding: cp949 -*-
 def getpartialmatch(N):
@@ -80,6 +126,7 @@ print kmp('ababbaba','aba')
 
 # 출처 : https://qkqhxla1.tistory.com/648?category=685988
 
+# ----------------------------------------------------------------------------------------------------
 
 def computeLPS(pat, lps):
     leng = 0  # length of the previous longest prefix suffix
