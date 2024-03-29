@@ -145,3 +145,17 @@ KMPSearch(pat, txt)
 
 # This code is contributed by Bhavya Jain
 # 출처 : https://devbull.xyz/python-kmp-algorijeumeuro-munjayeol-cajgi/
+
+
+```java
+char[] txt = br.readLine().toCharArray();
+char[] ptn = br.readLine().toCharArray();
+int tLen=txt.length, pLen=ptn.length;
+
+// 실패함수 만들기: KMP의 아이디어을 똑같이 적용
+int[] pi = new int[pLen];
+for(int i=1, j=0; i<pLen; i++){              // i:접미사 포인터
+    while(j>0 && ptn[i]!=ptn[j]) j=pi[j-1];  // j:접두사 포인터
+    if(ptn[i]==ptn[j]) pi[j] = ++j;
+}
+```
